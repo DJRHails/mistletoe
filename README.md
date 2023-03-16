@@ -46,6 +46,8 @@ main package:
 * HTML
 * LaTeX
 * AST (Abstract Syntax Tree; handy for debugging the parsing process)
+* Markdown (Can be used to reflow the text, or make other types of automated
+  changes to Markdown documents)
 
 Renderers for the following output formats can be found
 in the [contrib][contrib] package:
@@ -106,6 +108,18 @@ from mistletoe.latex_renderer import LaTeXRenderer
 
 with open('foo.md', 'r') as fin:
     rendered = mistletoe.markdown(fin, LaTeXRenderer)
+```
+
+To reflow the text in a Markdown document with a max line length of 20 characters:
+
+```python
+import mistletoe
+from mistletoe.markdown_renderer import MarkdownRenderer
+
+with open('dev-guide.md', 'r') as fin:
+    with MarkdownRenderer() as renderer:
+        print(renderer.render(mistletoe.Document(fin), max_line_length=20))
+
 ```
 
 Finally, here's how you would manually specify extra tokens via a renderer.
