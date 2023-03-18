@@ -244,3 +244,51 @@ with open('foo.md', 'r') as fin:
 For more info, take a look at the `base_renderer` module in mistletoe.
 The docstrings might give you a more granular idea of customizing mistletoe
 to your needs.
+
+## Markdown to Markdown
+
+Suppose you have some Markdown that you want to process and then output
+as Markdown again. Thanks to the text-like nature of Markdown, is is often
+possible to do this with text search-and-replace tools... but not always. For
+example, if you want to replace a text fragment in the plain text, but not
+in the embedded code samples, then the search-and-replace approach won't work.
+
+In this case you can use mistletoe's `MarkdownRenderer`:
+1. Parse Markdown to an AST tree (usually held in a `Document` token)
+2. Make modifications to the AST tree
+3. Render back to Markdown using `MarkdownRenderer.render()`.
+
+Here is an example of how you can make text replacements in selected parts
+of the AST:
+
+```python
+import mistletoe
+from mistletoe.block_token import BlockToken, Heading, Paragraph, SetextHeading
+from mistletoe.markdown_renderer import MarkdownRenderer
+from mistletoe.span_token import RawText
+
+
+def process(token: BlockToken, parent_block: BlockToken = None):
+    if isinstance(token, RawText) and isinstance(
+        parent_block, (Paragraph, SetextHeading, Heading)
+    ):
+        token.content = token.content.replace("mistletoe", "The Amazing mistletoe")
+
+    if hasattr(token, "children"):
+        parent = token if isinstance(token, BlockToken) else parent_block
+        for child in token.children:
+            process(child, parent_block=parent)
+
+
+with open("README.md", "r") as fin:
+    with MarkdownRenderer() as renderer:
+        document = mistletoe.Document(fin)
+        process(document)
+        md = renderer.render(document)
+        print(md)
+```
+
+If you're making large changes, so that the formatting of the document is
+affected, then it can be useful to also have the text reflowed. This can
+be done by specifying a `max_line_length` parameter in the call to
+`renderer.render()`.
