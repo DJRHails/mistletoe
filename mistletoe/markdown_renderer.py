@@ -75,11 +75,7 @@ class Fragment:
         text (str): markdown fragment
     """
 
-    def __init__(
-        self,
-        text: str,
-        **extras,
-    ):
+    def __init__(self, text: str, **extras):
         self.text = text
         for k, v in extras.items():
             setattr(self, k, v)
