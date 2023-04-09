@@ -119,7 +119,6 @@ from mistletoe.markdown_renderer import MarkdownRenderer
 with open('dev-guide.md', 'r') as fin:
     with MarkdownRenderer() as renderer:
         print(renderer.render(mistletoe.Document(fin), max_line_length=20))
-
 ```
 
 Finally, here's how you would manually specify extra tokens via a renderer.

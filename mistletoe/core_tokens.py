@@ -181,7 +181,7 @@ def match_link_image(string, offset, delimiter, root=None):
                     return match
     # footnote link
     if follows(string, offset, '['):
-        # full footnote link: [text][dest]
+        # full footnote link: [label][dest]
         result = match_link_label(string, offset+1, root)
         if result:
             match_info, (dest, title) = result

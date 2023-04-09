@@ -257,8 +257,7 @@ class MarkdownRenderer(BaseRenderer):
         self, token: block_token.SetextHeading, max_line_length: int = None
     ) -> Iterable[str]:
         yield from self.span_to_lines(token.children, max_line_length=max_line_length)
-        underline_char = "=" if token.level == 1 else "-"
-        yield underline_char * token.underline_length
+        yield token.underline
 
     def render_quote(
         self, token: block_token.Quote, max_line_length: int = None

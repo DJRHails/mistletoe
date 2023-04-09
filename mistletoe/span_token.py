@@ -242,7 +242,7 @@ class LineBreak(SpanToken):
     parse_group = 0
 
     def __init__(self, match):
-        self.content = ""
+        self.content = ''
         self.marker = match.group(1)
         self.soft = not self.marker.startswith(('  ', '\\'))
 
