@@ -204,7 +204,7 @@ class MarkdownRenderer(BaseRenderer):
 
     def render_line_break(self, token: span_token.LineBreak) -> Iterable[Fragment]:
         yield Fragment(
-            token.marker + "\n", wordwrap=token.soft, hard_line_break=not token.soft
+            token.content + "\n", wordwrap=token.soft, hard_line_break=not token.soft
         )
 
     def render_html_span(self, token: span_token.HTMLSpan) -> Iterable[Fragment]:

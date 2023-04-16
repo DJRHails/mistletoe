@@ -765,11 +765,12 @@ class TableCell(BlockToken):
 
 class Footnote(BlockToken):
     """
-    Footnote token. A sequence of "link reference definitions" according to the spec.
+    Footnote token. One or more "link reference definitions" according to the CommonMark spec.
     This is a leaf block token without children.
 
-    The constructor returns None, because the footnote information
-    is stored in Footnote.read.
+    The constructor returns None, because available footnote definitions are parsed
+    and stored into the root node within `Footnote.read()`. We don't put instances of
+    this class into the resulting AST.
     """
     def __new__(cls, _):
         return None
