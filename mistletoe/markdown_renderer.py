@@ -63,7 +63,7 @@ class LinkReferenceDefinitionBlock(block_token.Footnote):
         return obj
 
     def __init__(self, matches):
-        self.children = list(map(LinkReferenceDefinition, matches))
+        self.children = [LinkReferenceDefinition(match) for match in matches]
 
 
 class Fragment:
