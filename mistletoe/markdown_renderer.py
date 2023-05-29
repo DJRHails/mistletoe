@@ -87,7 +87,7 @@ class MarkdownRenderer(BaseRenderer):
     Designed to make as "clean" a roundtrip as possible, markdown -> parsing -> rendering -> markdown,
     except for nonessential whitespace. Except when rendering with word wrapping enabled.
 
-    Includes HTMLBlocks and HTMLSpans in the parsing.
+    Includes `HTMLBlock` and `HTMLSpan` tokens in the parsing.
     """
 
     _whitespace = re.compile(r"\s+")
