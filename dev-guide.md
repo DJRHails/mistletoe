@@ -248,7 +248,7 @@ to your needs.
 ## Markdown to Markdown
 
 Suppose you have some Markdown that you want to process and then output
-as Markdown again. Thanks to the text-like nature of Markdown, is is often
+as Markdown again. Thanks to the text-like nature of Markdown, it is often
 possible to do this with text search-and-replace tools... but not always. For
 example, if you want to replace a text fragment in the plain text, but not
 in the embedded code samples, then the search-and-replace approach won't work.
