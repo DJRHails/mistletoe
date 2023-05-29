@@ -34,7 +34,7 @@ class LinkReferenceDefinition(span_token.SpanToken):
     """
     Link reference definition. ([label]: dest "title")
 
-    Not included in the parsing process, but called by LinkReferenceDefinitionBlock.
+    Not included in the parsing process, but called by `LinkReferenceDefinitionBlock`.
 
     Attributes:
         label (str): link label, used in link references.
