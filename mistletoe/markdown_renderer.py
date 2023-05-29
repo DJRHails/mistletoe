@@ -53,7 +53,7 @@ class LinkReferenceDefinitionBlock(block_token.Footnote):
     A sequence of link reference definitions.
     This is a container block token. Its children are link reference definition tokens.
 
-    This class inherits from Footnote and modifies the behavior of the constructor,
+    This class inherits from `Footnote` and modifies the behavior of the constructor,
     to keep the tokens in the AST.
     """
 
