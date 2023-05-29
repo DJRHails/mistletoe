@@ -72,7 +72,7 @@ class Fragment:
     May carry additional data in addition to the text.
 
     Attributes:
-        text (str): markdown fragment
+        text (str): markdown fragment.
     """
 
     def __init__(self, text: str, **extras):
