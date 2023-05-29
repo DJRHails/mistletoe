@@ -77,8 +77,7 @@ class Fragment:
 
     def __init__(self, text: str, **extras):
         self.text = text
-        for k, v in extras.items():
-            setattr(self, k, v)
+        self.__dict__.update(extras)
 
 
 class MarkdownRenderer(BaseRenderer):
